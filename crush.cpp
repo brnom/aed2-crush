@@ -27,12 +27,16 @@ int** matriz_adj(int v, int e, int** in){
         int peso = in[i][2];
         if(partindo!=recebendo){ //sem autoloop
             matriz[partindo][recebendo]=peso;
-            matriz[recebendo][partindo]=peso;
         }
     }
 
     // retornar a braba
     return matriz;
+}
+
+int caminho(int **matriz){
+    //
+    return 0;
 }
 
 
@@ -66,16 +70,16 @@ int main(int argc, char const *argv[]){
     //matriz adjacentte criada
     int **adj=matriz_adj(v, e, arestas);
 
-/*  impressão da matriz de adjacencia    
+//*  impressão da matriz de adjacencia    
     for(int i=0; i<v; i++){
         printf("linha de %2d: ", i);
         for(int j=0; j<v; j++)
             printf("%2d ", adj[i][j]);
         printf("\n");
     }
-*/
+//*/
 
-    //manipulação
+    //manipulação to do..
 
 
     //desaloc
