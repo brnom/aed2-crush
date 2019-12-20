@@ -66,45 +66,33 @@ public:
 
 int main(int argc, char const *argv[]){
 
-    char file_name[100]; 
+    //recebendo entradas
     int v, e;
+    scanf("%d %d ", &v, &e);
 
-    // arquivo
-    FILE *entrada;
-    scanf("%s", file_name);
-    entrada = fopen(file_name, "r");
-    if (entrada == NULL){
-        printf("\nNao encontrei o arquivo!\n");
-        exit(EXIT_FAILURE);
-    }
-    fscanf(entrada, "%d %d ", &v, &e);
-
-    //receber os inputs
     int **arestas = (int**) malloc(sizeof(int*) *e );
-    for(int i=0; i<e; i++){
-        arestas[i]= (int *) malloc(3 * sizeof(int));
-        fscanf(entrada, "%d %d %d ", &arestas[i][0], &arestas[i][1], &arestas[i][2]);
+    
+    for ( int i = 0; i < e; i++ ){
+        arestas[i] = (int *) malloc(3 * sizeof(int));
+        scanf("%d %d %d ", &arestas[i][0], &arestas[i][1], &arestas[i][2]);
     }
-        
+    
+    // verificacion
+    // printf("vertic:%d; arest:%d.\n\n", v, e);
+    // for ( int i = 0; i < e; i++ )
+    //     printf(":=   %d %d %d\n", arestas[i][0], arestas[i][1], arestas[i][2]);
 
 
 
     Grafo dale(v);
-    for(int i=0; i<e; i++){
+    for ( int i = 0; i < e; i++ ){
         dale.addAresta(arestas[i][0], arestas[i][1], arestas[i][2]);
     }
     cout << dale.dijkstra(0, v-1) << endl;
 
-
-
-
-
     //desaloc
-    for(int i=0; i<e; i++)
+    for ( int i = 0; i < e; i++ )
         free(arestas[i]);
     free(arestas);
-
-    fclose(entrada);
-
     return 0;    
 }
